@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class ChatClient {
 
-    public static BufferedReader in;
-    public static PrintWriter out;
-    public static String name;
+    private static BufferedReader in;
+    private static PrintWriter out;
+    private static String name;
 
 
 
@@ -36,11 +36,13 @@ public class ChatClient {
             this.scanner = new Scanner(System.in);
         }
         public void run(){
+            //Send message to sever
+
             do {
-                System.out.print(name +":");
+                System.out.print(name + ":");
                 String message = scanner.nextLine();
                 out.println(message);
-            }while (true);
+            } while (true);
 
         }
 
@@ -53,10 +55,7 @@ public class ChatClient {
         public void run() {
 
             try {
-
-
-
-            // Process all messages from server, according to the protocol.
+                // Get message from server.
             while (true) {
                 String line = in.readLine();
                 if (line.startsWith("SUBMITNAME")) {
